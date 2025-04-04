@@ -1,3 +1,8 @@
+# Decola Tech 2025
+
+## Diagrama de Classes
+
+```mermaid
 erDiagram
     STUDENT ||--o{ ATTENDANCE : "has attendance"
     CLASS ||--o{ ATTENDANCE : "includes attendance"
@@ -24,3 +29,4 @@ erDiagram
         Long student_id FK "FK to STUDENT.id"
         Long class_id FK "FK to CLASS.id"
     }
+```
