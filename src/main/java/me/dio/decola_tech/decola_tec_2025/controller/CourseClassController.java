@@ -24,7 +24,7 @@ public class CourseClassController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Optional<CourseClass>> findById(@PathVariable Long id) {
+    public ResponseEntity<CourseClass> findById(@PathVariable Long id) {
         return ResponseEntity.ok(courseClassService.findById(id));
     }
 
