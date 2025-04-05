@@ -1,5 +1,6 @@
 package me.dio.decola_tech.decola_tec_2025.domain.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,10 +22,12 @@ public class Attendance {
     private boolean present;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "student_id")
     private Student student;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "class_id")
     private CourseClass courseClass;
 }

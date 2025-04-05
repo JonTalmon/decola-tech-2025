@@ -29,7 +29,7 @@ public class AttendanceController {
 
     @PostMapping
     public ResponseEntity<Attendance> save(@RequestBody Attendance attendance) {
-        return ResponseEntity.ok(attendanceService.save(attendance));
+        return ResponseEntity.status(201).body(attendanceService.save(attendance));
     }
 
     @DeleteMapping("/{id}")

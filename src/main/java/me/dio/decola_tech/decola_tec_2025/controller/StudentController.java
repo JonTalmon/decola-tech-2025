@@ -30,7 +30,7 @@ public class StudentController {
     }
 
     @PostMapping
-    public ResponseEntity<Student> save(Student student) {
+    public ResponseEntity<Student> save(@RequestBody Student student) {
         return ResponseEntity.ok(studentService.save(student));
     }
 

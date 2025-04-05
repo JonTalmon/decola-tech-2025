@@ -1,6 +1,7 @@
 package me.dio.decola_tech.decola_tec_2025.domain.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,5 +24,6 @@ public class Student {
     private String registration;
 
     @OneToMany(mappedBy = "student")
+    @JsonIgnore
     private List<Attendance> attendances;
 }
