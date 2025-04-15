@@ -37,16 +37,40 @@ public class AttendanceServiceImpli implements AttendanceService {
     }
 
     @Override
+    public Attendance update(Long id, Attendance updatedAttendance) {
+        Attendance attendance = attendanceRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Attendance not found with id: " + id));
+
+        Long studentId = updatedAttendance.getStudent().getId();
+        Long courseClassId = updatedAttendance.getCourseClass().getId();
+
+        var student = studentRepository.findById(studentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Student not found with id: " + studentId));
+
+        var courseClass = courseClassRepository.findById(courseClassId)
+                .orElseThrow(() -> new ResourceNotFoundException("CourseClass not found with id: " + courseClassId));
+
+        attendance.setDate(updatedAttendance.getDate());
+        attendance.setPresent(updatedAttendance.isPresent());
+        attendance.setStudent(student);
+        attendance.setCourseClass(courseClass);
+
+        return attendanceRepository.save(attendance);
+    }
+
+    @Override
     public Attendance save(Attendance attendance) {
         Long studentId = attendance.getStudent().getId();
         Long courseClassId = attendance.getCourseClass().getId();
 
-        studentRepository.findById(studentId)
+        var student = studentRepository.findById(studentId)
                 .orElseThrow(() -> new ResourceNotFoundException("Student not found with id: " + studentId));
 
-        courseClassRepository.findById(courseClassId)
+        var courseClass = courseClassRepository.findById(courseClassId)
                 .orElseThrow(() -> new ResourceNotFoundException("CourseClass not found with id: " + courseClassId));
 
+        attendance.setStudent(student);
+        attendance.setCourseClass(courseClass);
         return attendanceRepository.save(attendance);
     }
 

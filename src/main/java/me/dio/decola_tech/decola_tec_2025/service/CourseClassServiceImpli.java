@@ -38,7 +38,12 @@ public class CourseClassServiceImpli implements CourseClassService {
     public CourseClass update(Long id, CourseClass updatedCourseClass) {
         CourseClass courseClass = courseClassRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("CourseClass not found with id: " + id));
+
         courseClass.setName(updatedCourseClass.getName());
+        courseClass.setDescription(updatedCourseClass.getDescription());
+        courseClass.setStartDate(updatedCourseClass.getStartDate());
+        courseClass.setEndDate(updatedCourseClass.getEndDate());
+
         return courseClassRepository.save(courseClass);
     }
 

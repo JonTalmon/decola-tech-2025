@@ -8,6 +8,7 @@ public interface AttendanceService {
 
     List<Attendance> findAll();
     Attendance findById(Long id);
+    Attendance update(Long id, Attendance updatedAttendance);
     Attendance save(Attendance attendance);
     void delete(Long id);
 }

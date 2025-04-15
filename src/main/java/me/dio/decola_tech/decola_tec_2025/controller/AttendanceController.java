@@ -32,6 +32,12 @@ public class AttendanceController {
         return ResponseEntity.status(201).body(attendanceService.save(attendance));
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Attendance> update(@PathVariable Long id, @RequestBody Attendance updatedAttendance) {
+        return ResponseEntity.ok(attendanceService.update(id, updatedAttendance));
+    }
+
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         attendanceService.delete(id);
