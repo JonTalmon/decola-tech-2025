@@ -22,12 +22,10 @@ public class Attendance {
     private boolean present;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "student_id")
     private Student student;
 
     @ManyToOne
-    @JsonIgnore
     @JoinColumn(name = "class_id")
     private CourseClass courseClass;
 }
